@@ -2,5 +2,5 @@
 object "Initiating Gateway" as init
 object "Responding Gateway" as resp
 init - resp : Cross Gateway Fetch [ITI-63] >
-footer Figure 29.1-1: XCF Actor Diagram
+footer Figure 29.1-2: XCF Actor Diagram
 @enduml
