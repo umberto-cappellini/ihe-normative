@@ -52,4 +52,4 @@ Ideally, only one document will satisfy the Fetch (e.g., only the most current i
 
 Figure 29.1-1 shows the actors directly involved in the XCF Profile and the relevant transactions between them.
 
-![Figure 29.1-1](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/umberto-cappellini/ihe-normative/master/uml/xcf_actor_diagram.uml&version?201807271624)
+![Figure 29.1-1](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/umberto-cappellini/ihe-normative/master/uml/xcf_actor_diagram.uml&version?201807271626)
