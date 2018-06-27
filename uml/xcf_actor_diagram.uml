@@ -1,0 +1,5 @@
+@startuml
+object "Initiating Gateway" as init
+object "Responding Gateway" as resp
+init - resp : Cross Gateway Fetch [ITI-63] >
+@enduml
