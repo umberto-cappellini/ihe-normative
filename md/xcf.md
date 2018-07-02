@@ -53,3 +53,70 @@ Ideally, only one document will satisfy the Fetch (e.g., only the most current i
 Figure 29.1-1 shows the actors directly involved in the XCF Profile and the relevant transactions between them.
 
 ![Figure 29.1-1](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/umberto-cappellini/ihe-normative/master/uml/xcf_actor_diagram.uml?version=201807271630)
+
+Table 29.1-1 lists the transactions for each actor directly involved in the XCF Profile. In order to claim support of this profile, an implementation must perform the required transactions (labeled “R”). Transactions labeled “O” are optional. A complete list of options defined by this profile and that implementations may choose to support is listed in Section 29.2.
+
+Table 29.1-1: XCF Profile - Actors and Transactions
+
+| Actors | Transactions | Optionality | Reference |
+| :--- | :--- | :---: | :--- |
+| Initiating Gateway  | Cross Gateway Fetch [ITI-63] | R | ITI TF-2b: 3.63 |
+| Responding Gateway  | Cross Gateway Fetch [ITI-63] | R | ITI TF-2b: 3.63 |
+
+## 29.2 XCF Profile Options
+
+Options that may be selected for this profile are listed in the Table 29.2-1 along with the actors to which they apply. Dependencies between options when applicable are specified in notes.
+
+Table 29.2-1: XCF - Actors and Options
+
+| Actors | Options | Reference |
+| :--- | :--- | :---: |
+| Initiating Gateway  | Asynchronous Web Services Exchange | Section 29.2.1 |
+| Responding Gateway  | No options defined | -- |
+
+The Responding Gateways shall support Asynchronous Web Services Exchange Option on the Cross Gateway Fetch. Support for this function is required in order to enable use of Asynchronous Web Services Exchange in any cross-community interaction.
+
+### 29.2.1 Asynchronous Web Services Exchange Option
+
+Initiating Gateways which support Asynchronous Web Services Exchange shall support Asynchronous Web Services Exchange on the Cross Gateway Fetch [ITI-63] transaction.
+
+## 29.3 XCF Actor Groupings and Profile Interactions
+
+### 29.3.1 XCF Required Groupings
+
+An actor from this profile (Column 1) shall implement all of the required transactions and/or content modules in this profile in addition to all of the transactions required for the grouped actor (Column 2).
+
+If this is a content profile, and actors from this profile are grouped with actors from a workflow or transport profile, the Content Bindings reference column references any specifications for mapping data from the content module into data elements from the workflow or transport transactions.
+
+Table 29.3.1-1: XCF - Required Actor Groupings
+
+| XCF Actor | Actor to be grouped with | Reference | Content Bindings Reference |
+| :--- | :--- | :---: | :--- |
+| Initiating Gateway  | ATNA / Secure Node or Secure Application | ITI TF-1: 9 | -- |
+|   | CT / Time Client | ITI TF-1: 7 | -- |
+|   | XUA / X-Service User | ITI TF-1: 13 | -- |
+| Responding Gateway  | ATNA / Secure Node or Secure Application | ITI TF-1: 9 | -- |
+|   | CT / Time Client | ITI TF-1: 7 | -- |
+|   | XUA / X-Service User | ITI TF-1: 13 | -- |
+
+### 29.3.2 XDS/XCA Interactions (Informative)
+
+Interoperable interaction between communities which have chosen to implement only XCF and those that are based on XDS or XCA may be enabled through transformation agents. IHE does not specify the mechanism used by such transformation agents or any details about their implementation. The following sections give a high level perspective on the challenges of enabling four cases of agents:
+
+1. “responding agent” for XDS- acts as an XCF Responding Gateway and converts incoming Cross Gateway Fetch transactions into XDS transactions to collect the content needed for the response.
+2. “responding agent” for XCA- acts as an XCF Responding Gateway and converts incoming Cross Gateway Fetch transactions into XCA transactions to collect the content needed for the response.
+3. “initiating agent” for XDS – acts as an XCF Initiating Gateway and converts XDS transactions into Cross Gateway Fetch transactions to collect content from XCF only communities.
+4. “initiating agent” for XCA– acts as an XCF Initiating Gateway and converts XCA transactions into Cross Gateway Fetch transactions to collect content from XCF only communities.
+
+Some agents are relatively easy to implement and others are quite complicated. In environments where integration of with XCA and XDS is important it would be advisable to consider XCA with the On-Demand Documents Option as an alternative to the use of XCF.
+
+### 29.3.2.1 “responding agent” for XDS (Grouping with Document Consumer)
+
+A “responding agent” for XDS converts incoming Cross Gateway Fetch transactions into Registry Stored Query [ITI-18] and Retrieve Document Set [ITI-43] transactions which are directed to a local XDS Registry/Repository. This type of agent has value because it allows access by XCF only communities to content within XDS based communities.
+
+A “responding agent” for XDS can be enabled through a relatively simple grouping of XDS Document Consumer and XCF Responding Gateway. The agent must convert the Cross Gateway Fetch query into a collection of Registry Stored Query and Retrieve Document Set transactions.
+This conversion is relatively straightforward; the query in the Cross Gateway Fetch transaction maps closely to the Find Documents stored query of Registry Stored Query and from this query the agent can generate appropriate Retrieve Document Set transactions to get the document contents. Several additional details need to be managed by the agent, like supplying document associations and handling situations when the results are too large to be returned in the Cross Gateway Fetch response. Figure 29.3.2.1-1 depicts this environment.
+
+![Responding Agent](../img/responding_agent.png)
+
+### 29.3.2.2 “responding agent” for XCA
