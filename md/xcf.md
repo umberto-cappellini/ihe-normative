@@ -120,3 +120,94 @@ This conversion is relatively straightforward; the query in the Cross Gateway Fe
 ![Responding Agent](../img/responding_agent.png)
 
 ### 29.3.2.2 “responding agent” for XCA
+
+A “responding agent” for XCA converts incoming Cross Gateway Fetch transactions into Cross Gateway Query and Cross Gateway Retrieve transactions which are directed to a XCA Responding Gateway. This type of agent has value because it allows access by XCF only communities to content within XCA based communities.
+
+A “responding agent” for XCA groups with an XCA Initiating Gateway in order to initiate Cross Gateway Query and Cross Gateway Retrieve transactions to a XCA Responding Gateway. The agent must convert the Cross Gateway Fetch query into an appropriate query supported by Cross Gateway Query and must interpret and collect the results of the Cross Gateway Query and Cross Gateway Retrieve in order to respond to the Cross Gateway Fetch transaction. The query mapping and translation across transactions is equivalent to the work involved in a “responding agent” for XDS. Figure 29.3.2.2-1 depicts this environment.
+
+![Responding Agent](../img/responding_agent_xca.png)
+
+### 29.3.2.2 “initiating agent” for XDS
+
+An “initiating agent” for XDS enables access by the significant number of products supporting the XDS Document Consumer to content within a community that only supports XCF. Without this kind of enablement EMR/EHR systems (and others) will be cut off from the content held by a community that chooses to support only XCF. Enabling this interaction is more difficult than the other direction and this section only skims the surface of the work involved.
+
+The “initiating agent” for XDS must be able to convert the contents of Registry Stored Query [ITI-18] transactions into Cross Gateway Fetch transactions. Typically, this will involve the conversion of the Find Documents stored query. Along with copying all the parameters, the
+“initiating agent” for XDS must also manage a few other aspects of the query request. Handling the response from the Cross Gateway Fetch transactions involves storing locally the parts not immediately requested by the XDS Document Consumer and returning only the parts that are appropriate. For example, the Cross Gateway Fetch transaction will return the documents
+associated with the metadata. The “initiating agent” for XDS cannot return these documents in the Registry Stored Query transaction so must save them locally in order to be able to return them upon receipt of a Retrieve Document Set transaction. The local storage, called “Copy of Community B content” in the diagram, looks a little like an XDS Registry/Repository system managed and used by the “initiating agent” for XDS. This storage will also need to hold the
+metadata returned in the Cross Gateway Fetch to respond to Registry Stored Query transactions that use stored queries other than Find Documents. The complete design of the “initiating agent” for XDS is a non-trivial task and not further described by IHE.
+
+![Initiating Agent](../img/initiating_agent.png)
+
+### 29.3.2.4 “initiating agent” for XCA
+
+An “initiating agent” for XCA enables access by communities using a XCA Initiating Gateway to access content within a community that only supports XCF. Without this kind of enablement XCA communities will be cut off from the content held by a community that chooses to support only XCF. Enabling this interaction is very similar to the enablement for XDS. Figure 29.3.1.4-1
+presents a view of how this enablement might be designed and represents the small differences from the “initiating agent” for XDS described in Section 29.3.2.4.
+
+![Initiating Agent](../img/initiating_agent_xca.png)
+
+### 29.3.3 Profile Interactions (Informative)
+
+Potential interactions for XCF with other IHE profiles are illustrated in this real world example.
+
+It is assumed that a gateway infrastructure is set up for sharing patient’s medical summary data among autonomous regions. Each region collects a different set of data for its patients and makes use of its own document schema and builds upon its specific taxonomies for coding values.
+Patients may define privacy policies for their data and give general consent for data sharing in their region of affiliation while healthcare professionals are authenticated in the region of care.
+Gateways perform all the transcoding, trust brokerage and access control enforcement such that all the (technical) complexity of this use case is hidden from the existing regional infrastructures and the acting persons.
+As a result of this hidden complexity, from the physician’s perspective this use case is just a single operation: retrieval of an identified patient’s medical summary.
+
+Organizationally, the concrete service delivery steps may be assigned to existing relevant IHE profiles for partial task fulfillment.
+
+| Service Delivery Step | Support provided by IHE Profiles |
+| :--- | :--- |
+| Claim about requestor authenticity  | Initiating gateway grouped with IHE XUA X-Service-User Responding gateway grouped with IHE XUA X-Service-Provider |
+| Provisioning of requestor identity attributes (local roles,
+permissions, treatment context, delegation) | **IHE XUA** attributes |
+| Establishing and Verifying Trust Relationships between
+the initiating and responding gateways | Deployment of the gateways as **IHE ATNA** Secure Nodes |
+| Establishing an Audit Trail for traceability between initiating and responding gateway | **IHE ATNA** Audit Trail |
+| Verification of the patient’s privacy consent | **IHE BPPC** encoded consents accessed through **IHE XDS** transactions. |
+| Assurance of health information integrity and originator authenticity | **IHE DSG** for document digital signatures |
+| Policy Decision and Policy Enforcement at each of the gateways | Policy Decision and Policy Enforcement (IHE White Paper on Access Control) |
+| Health Information Exchange with opaque regional infrastructures | May be implemented by IHE XDS or other Entity Services à intentionally opaque |
+| Canonical encoding of patient summary document for sharing information among autonomous regions | e.g., IHE PCC XDS-MS (Medical Summary Document Content) as content model |
+
+The translation and transcoding of patient summary data from a regional encoding into the canonical encoding at the Responding Gateway and the reverse transformation at the Initiating Gateway are out of the scope of IHE and subject to individual implementation (even though profiles like IHE SVS can help with the management of value sets). The Figure 29.3.3-1 shows the respective document transformations, which require – from the consumer’s perspective - at least two intermediary documents.
+
+![ID Flow](../img/document_id_flow.png)
+
+### 3.63.7 Sample Request Message (Informative)
+
+``` xml
+<soapenv:Envelope
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header> ... </soapenv:Header>
+    <soapenv:Body>
+        <query:AdhocQueryRequest>
+            <query:ResponseOption returnComposedObjects="true" returnType="LeafClassWithRepositoryItem"/>
+            <rim:AdhocQuery id="urn:uuid:f2072993-9478-41df-a603-8f016706efe8"
+home=”2.16.17.710.780.1000.990.1”>
+                <rim:Slot name="$XDSDocumentEntryPatientId">
+                    <rim:ValueList>
+                        <rim:Value>
+                            ‘AT12998493069126^^^&amp;2.16.17.710.780.1000.990.1&amp;ISO’
+                        </rim:Value>
+                    </rim:ValueList>
+                </rim:Slot>
+                <rim:Slot name="$XDSDocumentEntryStatus">
+                    <rim:ValueList>
+                        <rim:Value>
+                            ('urn:oasis:names:tc:ebxml-regrep:StatusType:Approved')
+                        </rim:Value>
+                    </rim:ValueList>
+                </rim:Slot>
+                <rim:Slot name="$XDSDocumentEntryClassCode">
+                    <rim:ValueList>
+                        <rim:Value>
+                            ('57833-6^^2.16.840.1.113883.6.1')
+                        </rim:Value>
+                    </rim:ValueList>
+                </rim:Slot>
+            </rim:AdhocQuery>
+        </query:AdhocQueryRequest>
+    </soapenv:Body>
+</soapenv:Envelope>
+```
