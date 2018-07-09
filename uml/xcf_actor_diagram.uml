@@ -1,6 +1,6 @@
 @startuml
 object "Initiating Gateway" as init
 object "Responding Gateway" as resp
-init - resp : Cross Gateway Fetch [ITI-63] >
+init - resp : Cross Gateway Fetch [ITI-64] >
 footer Figure 29.1-1: XCF Actor Diagram
 @enduml
