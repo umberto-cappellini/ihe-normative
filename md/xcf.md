@@ -170,7 +170,7 @@ the initiating and responding gateways | Deployment of the gateways as **IHE ATN
 | Health Information Exchange with opaque regional infrastructures | May be implemented by IHE XDS or other Entity Services à intentionally opaque |
 | Canonical encoding of patient summary document for sharing information among autonomous regions | e.g., IHE PCC XDS-MS (Medical Summary Document Content) as content model |
 
-The translation and transcoding of patient summary data from a regional encoding into the canonical encoding at the Responding Gateway and the reverse transformation at the Initiating Gateway are out of the scope of IHE and subject to individual implementation (even though profiles like IHE SVS can help with the management of value sets). The Figure 29.3.3-1 shows the respective document transformations, which require – from the consumer’s perspective - at least two intermediary documents.
+The translation and transcoding of patient summary data from a regional encoding into the canonical encoding at the Responding Gateway and the reverse transformation at the Initiating Gateway are out of the scope of IHE and subject to individual implementation (even though profiles like IHE SVS can help with the management of value sets). The Figure 29.3.3-1 shows the respective document transformations, which require ( from the consumer’s perspective ) at least two intermediary documents.
 
 ![ID Flow](../img/document_id_flow.png)
 
