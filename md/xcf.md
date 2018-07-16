@@ -9,6 +9,35 @@
 #### *Copyright © 2016: IHE International, Inc.*
 
 ---
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+### Table of Contents
+
+  - [Integrating the Healthcare Enterprise](#integrating-the-healthcare-enterprise)
+- [IHE IT Infrastructure<br/>Technical Framework Supplement<br/><br/>Cross-Community Fetch (XCF)<br/><br/>Rev. 1.5 – Trial Implementation](#ihe-it-infrastructurebrtechnical-framework-supplementbrbrcross-community-fetch-xcfbrbrrev-15--trial-implementation)
+    - [Date: July 21, 2017<br/>Author: ITI Technical Committee<br/>Email: iti@ihe.net](#date-july-21-2017brauthor-iti-technical-committeebremail-itiihenet)
+      - [*Please verify you have the most recent version of this document. See here for Trial Implementation and Final Text versions and here for Public Comment versions.*](#please-verify-you-have-the-most-recent-version-of-this-document-see-here-for-trial-implementation-and-final-text-versions-and-here-for-public-comment-versions)
+      - [*Copyright © 2016: IHE International, Inc.*](#copyright-%C2%A9-2016-ihe-international-inc)
+  - [Introduction](#introduction)
+  - [Open Issues and Questions](#open-issues-and-questions)
+- [Volume 1 – Profile](#volume-1--profile)
+  - [29 Cross-Community Fetch (XCF) Profile](#29-cross-community-fetch-xcf-profile)
+  - [29.1 Actors/Transactions](#291-actorstransactions)
+  - [29.2 XCF Profile Options](#292-xcf-profile-options)
+    - [29.2.1 Asynchronous Web Services Exchange Option](#2921-asynchronous-web-services-exchange-option)
+  - [29.3 XCF Actor Groupings and Profile Interactions](#293-xcf-actor-groupings-and-profile-interactions)
+    - [29.3.1 XCF Required Groupings](#2931-xcf-required-groupings)
+    - [29.3.2 XDS/XCA Interactions (Informative)](#2932-xdsxca-interactions-informative)
+    - [29.3.2.1 “responding agent” for XDS (Grouping with Document Consumer)](#29321-responding-agent-for-xds-grouping-with-document-consumer)
+    - [29.3.2.2 “responding agent” for XCA](#29322-responding-agent-for-xca)
+    - [29.3.2.2 “initiating agent” for XDS](#29322-initiating-agent-for-xds)
+    - [29.3.2.4 “initiating agent” for XCA](#29324-initiating-agent-for-xca)
+    - [29.3.3 Profile Interactions (Informative)](#2933-profile-interactions-informative)
+    - [3.63.7 Sample Request Message (Informative)](#3637-sample-request-message-informative)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+---
 
 ## Introduction
 The Cross-Community Fetch (XCF) Profile defines a single transaction for accessing medical data between gateways that facilitate multiple dimensions of communication (trust, semantics, encoding, legislation, authority, etc.). The profile is highly inspired by the Cross Gateway Query/Cross Gateway Retrieve transactions and integrates these originally distinct transactions.
