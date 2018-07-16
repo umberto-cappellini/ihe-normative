@@ -84,6 +84,7 @@ Figure 29.1-1 shows the actors directly involved in the XCF Profile and the rele
 ![Figure 29.1-1](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/umberto-cappellini/ihe-normative/master/uml/xcf_actor_diagram.uml?version=5)
 
 Table 29.1-1 lists the transactions for each actor directly involved in the XCF Profile. In order to claim support of this profile, an implementation must perform the required transactions (labeled “R”). Transactions labeled “O” are optional. A complete list of options defined by this profile and that implementations may choose to support is listed in Section 29.2.
+Added a fake transaction.
 
 Table 29.1-1: XCF Profile - Actors and Transactions
 
@@ -91,6 +92,7 @@ Table 29.1-1: XCF Profile - Actors and Transactions
 | :--- | :--- | :---: | :--- |
 | Initiating Gateway  | Cross Gateway Fetch [ITI-63] | R | ITI TF-2b: 3.63 |
 | Responding Gateway  | Cross Gateway Fetch [ITI-63] | R | ITI TF-2b: 3.63 |
+| Responding Gateway  | Fake Transaction [ITI-200] | R | ITI TF-2b: 3.63 |
 
 ## 29.2 XCF Profile Options
 
