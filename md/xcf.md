@@ -92,7 +92,6 @@ Table 29.1-1: XCF Profile - Actors and Transactions
 | :--- | :--- | :---: | :--- |
 | Initiating Gateway  | Cross Gateway Fetch [ITI-63] | R | ITI TF-2b: 3.63 |
 | Responding Gateway  | Cross Gateway Fetch [ITI-63] | R | ITI TF-2b: 3.63 |
-| Responding Gateway  | Fake Transaction [ITI-200] | R | ITI TF-2b: 3.63 |
 
 ## 29.2 XCF Profile Options
 
