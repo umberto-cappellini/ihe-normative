@@ -4,6 +4,8 @@
 
 ### Date: July 21, 2017<br/>Author: ITI Technical Committee<br/>Email: iti@ihe.net
 
+### Hello from John
+
 #### *Please verify you have the most recent version of this document. See here for Trial Implementation and Final Text versions and here for Public Comment versions.*
 
 #### *Copyright © 2016: IHE International, Inc.*
