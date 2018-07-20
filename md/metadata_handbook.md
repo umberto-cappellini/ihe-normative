@@ -20,6 +20,49 @@ Information about the organization of IHE Technical Frameworks and Supplements a
 
 The current version of the IHE IT Infrastructure Technical Framework can be found at http://ihe.net/Technical_Frameworks.
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+## Contents
+- [Introduction](#introduction)
+  - [Purpose of this Handbook](#purpose-of-this-handbook)
+    - [When to use this Handbook](#when-to-use-this-handbook)
+    - [How to use this Handbook](#how-to-use-this-handbook)
+  - [Intended Audience](#intended-audience)
+  - [Background References](#background-references)
+    - [Samples and ongoing Discussion](#samples-and-ongoing-discussion)
+  - [Comment Process](#comment-process)
+  - [Open and Closed Issues](#open-and-closed-issues)
+- [Principles of good document metadata control](#principles-of-good-document-metadata-control)
+  - [XDS/XCA Optimal Query](#xdsxca-optimal-query)
+    - [Classification – value sets are critical](#classification--value-sets-are-critical)
+    - [Power of other query parameters](#power-of-other-query-parameters)
+  - [Local refinement of Query results](#local-refinement-of-query-results)
+  - [lessons learned by this query strategy](#lessons-learned-by-this-query-strategy)
+- [Process to define your document metadata constraints](#process-to-define-your-document-metadata-constraints)
+  - [Identify shared business needs](#identify-shared-business-needs)
+  - [Gather relevant Use cases](#gather-relevant-use-cases)
+  - [Gather existing patterns of how metadata are used](#gather-existing-patterns-of-how-metadata-are-used)
+  - [Various uses for metadata](#various-uses-for-metadata)
+        - [Note: The above figure is from IHE ITI Technical Framework Volume 3.](#note-the-above-figure-is-from-ihe-iti-technical-framework-volume-3)
+  - [Determine the needs for constraints](#determine-the-needs-for-constraints)
+  - [Assemble the metadata attributes](#assemble-the-metadata-attributes)
+  - [Use the guidance in the Handbook to assemble the metadata set](#use-the-guidance-in-the-handbook-to-assemble-the-metadata-set)
+  - [Community Metadata Specification](#community-metadata-specification)
+  - [Deployment and Maintenance](#deployment-and-maintenance)
+    - [Historic shared documents and their metadata.](#historic-shared-documents-and-their-metadata)
+  - [Maintenance and Governance](#maintenance-and-governance)
+- [Metadata principles and guidelines](#metadata-principles-and-guidelines)
+  - [General Principles for Codes](#general-principles-for-codes)
+  - [Principles per metadata attribute](#principles-per-metadata-attribute)
+    - [classCode](#classcode)
+    - [typeCode](#typecode)
+    - [practiceSettingCode](#practicesettingcode)
+    - [healthCareFacilityTypeCode](#healthcarefacilitytypecode)
+    - [authorRole](#authorrole)
+    - [authorSpeciality](#authorspeciality)
+- [Glossary](#glossary)
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Introduction
 
 The Document Sharing profiles from IHE including XDS and XCA, enable a Community to share Patient specific medical documents. This is described in the HIE white paper. Each document shared is described by metadata. A Community deploying an HIE this way needs to define some metadata constraints and practices, so that the documents are found when they are needed. This handbook helps a Community to come up with appropriate constraints.
